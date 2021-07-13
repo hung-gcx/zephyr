@@ -47,6 +47,13 @@ config MODBUS_SERIAL
 	help
 	  Enable Modbus over serial line support.
 
+config MODBUS_SERIAL_STOPBITS
+	bool "Number of stop bits for Modbus over serial line"
+	depends on MODBUS_SERIAL
+	default n
+	help
+	  Number of stop bits for Modbus over serial line
+
 config MODBUS_ASCII_MODE
 	depends on MODBUS_SERIAL
 	bool "Modbus transmission mode ASCII"

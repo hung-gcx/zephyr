@@ -571,6 +571,11 @@ int modbus_serial_init(struct modbus_context *ctx,
 		return -EINVAL;
 	}
 
+#ifdef CONFIG_MODBUS_SERIAL_STOPBITS
+	/* Overwrite default Modbus setting for stop bits*/
+	uart_cfg.stop_bits = param.serial.stop_bits;
+#endif
+
 	if (uart_configure(cfg->dev, &uart_cfg) != 0) {
 		LOG_ERR("Failed to configure UART");
 		return -EINVAL;
